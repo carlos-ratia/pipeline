@@ -1,2 +1,2 @@
 # pipeline
-A plug and play pipeline pattern implementations.
+[![Author](https://img.shields.io/packagist/php-v/bunkerdb/pipeline)](https://www.linkedin.com/in/cratia/)
