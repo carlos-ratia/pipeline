@@ -11,8 +11,8 @@ use Pipeline\Interfaces\IPipelineProcessor;
 use Pipeline\Interfaces\IStage;
 
 /**
- * Class BasePipelineProcessor
- * @package App\Application\Models\ORM\Common
+ * Class PipelineProcessor
+ * @package Pipeline\Common
  */
 class PipelineProcessor implements IPipelineProcessor
 {

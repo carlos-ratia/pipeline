@@ -9,7 +9,7 @@ use Closure;
 
 /**
  * Interface ICatch
- * @package BunkerDb\Common\Pipeline\Interfaces
+ * @package Pipeline\Interfaces
  */
 interface ICatch
 {

@@ -13,7 +13,7 @@ use ReflectionParameter;
 
 /**
  * Class StageCatch
- * @package BunkerDB\Common\Pipeline
+ * @package Pipeline\Common
  */
 class StageCatch extends Stage implements IStage, ICatch
 {

@@ -7,7 +7,7 @@ namespace Pipeline\Interfaces;
 
 /**
  * Interface IPipelineProcessor
- * @package BunkerDB\Common\Pipeline\Interfaces
+ * @package Pipeline\Interfaces
  */
 interface IPipelineProcessor
 {

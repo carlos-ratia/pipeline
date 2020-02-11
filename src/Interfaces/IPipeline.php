@@ -9,7 +9,7 @@ use Closure;
 
 /**
  * Interface IPipeline
- * @package BunkerDB\Common\Pipeline\Interfaces
+ * @package Pipeline\Interfaces
  */
 interface IPipeline
 {

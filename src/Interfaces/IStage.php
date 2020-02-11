@@ -9,7 +9,7 @@ use Closure;
 
 /**
  * Interface IStage
- * @package BunkerDb\Common\Pipeline\Interfaces
+ * @package Pipeline\Interfaces
  */
 interface IStage
 {

@@ -16,7 +16,7 @@ use Pipeline\Interfaces\IStage;
 
 /**
  * Class Pipeline
- * @package BunkerDB\Common
+ * @package Pipeline
  */
 class Pipeline implements IPipeline
 {

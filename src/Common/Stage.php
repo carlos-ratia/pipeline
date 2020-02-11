@@ -9,7 +9,7 @@ use Pipeline\Interfaces\IStage;
 
 /**
  * Class Stage
- * @package BunkerDB\Common\Pipeline
+ * @package Pipeline\Common
  */
 class Stage implements IStage
 {
