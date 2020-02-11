@@ -2,17 +2,17 @@
 declare(strict_types=1);
 
 
-namespace Pipeline;
+namespace Cratia;
 
 
 use Closure;
-use Pipeline\Common\PipelineProcessor;
-use Pipeline\Common\Stage;
-use Pipeline\Common\StageCatch;
-use Pipeline\Interfaces\ICatch;
-use Pipeline\Interfaces\IPipeline;
-use Pipeline\Interfaces\IPipelineProcessor;
-use Pipeline\Interfaces\IStage;
+use Cratia\Pipeline\Common\PipelineProcessor;
+use Cratia\Pipeline\Common\Stage;
+use Cratia\Pipeline\Common\StageCatch;
+use Cratia\Pipeline\Interfaces\ICatch;
+use Cratia\Pipeline\Interfaces\IPipeline;
+use Cratia\Pipeline\Interfaces\IPipelineProcessor;
+use Cratia\Pipeline\Interfaces\IStage;
 
 /**
  * Class Pipeline

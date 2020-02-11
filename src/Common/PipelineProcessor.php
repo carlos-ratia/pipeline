@@ -2,13 +2,13 @@
 declare(strict_types=1);
 
 
-namespace Pipeline\Common;
+namespace Cratia\Pipeline\Common;
 
 
+use Cratia\Pipeline\Interfaces\ICatch;
+use Cratia\Pipeline\Interfaces\IPipelineProcessor;
+use Cratia\Pipeline\Interfaces\IStage;
 use Exception;
-use Pipeline\Interfaces\ICatch;
-use Pipeline\Interfaces\IPipelineProcessor;
-use Pipeline\Interfaces\IStage;
 
 /**
  * Class PipelineProcessor

@@ -2,12 +2,12 @@
 declare(strict_types=1);
 
 
-namespace Pipeline\Common;
+namespace Cratia\Pipeline\Common;
 
 use Closure;
+use Cratia\Pipeline\Interfaces\ICatch;
+use Cratia\Pipeline\Interfaces\IStage;
 use Exception;
-use Pipeline\Interfaces\ICatch;
-use Pipeline\Interfaces\IStage;
 use ReflectionFunction;
 use ReflectionParameter;
 

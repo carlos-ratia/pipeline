@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 
-namespace Pipeline\Interfaces;
+namespace Cratia\Pipeline\Interfaces;
 
 
 use Closure;

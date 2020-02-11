@@ -2,10 +2,10 @@
 declare(strict_types=1);
 
 
-namespace Pipeline\Common;
+namespace Cratia\Pipeline\Common;
 
 use Closure;
-use Pipeline\Interfaces\IStage;
+use Cratia\Pipeline\Interfaces\IStage;
 
 /**
  * Class Stage
