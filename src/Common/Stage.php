@@ -2,10 +2,10 @@
 declare(strict_types=1);
 
 
-namespace BunkerDB\Common\Pipeline;
+namespace Pipeline\Common;
 
-use BunkerDb\Common\Pipeline\Interfaces\IStage;
 use Closure;
+use Pipeline\Interfaces\IStage;
 
 /**
  * Class Stage

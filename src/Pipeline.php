@@ -2,17 +2,17 @@
 declare(strict_types=1);
 
 
-namespace BunkerDB\Common;
+namespace Pipeline;
 
 
-use BunkerDb\Common\Pipeline\Interfaces\ICatch;
-use BunkerDB\Common\Pipeline\Interfaces\IPipeline;
-use BunkerDB\Common\Pipeline\Interfaces\IPipelineProcessor;
-use BunkerDb\Common\Pipeline\Interfaces\IStage;
-use BunkerDB\Common\Pipeline\PipelineProcessor;
-use BunkerDB\Common\Pipeline\Stage;
-use BunkerDB\Common\Pipeline\StageCatch;
 use Closure;
+use Pipeline\Common\PipelineProcessor;
+use Pipeline\Common\Stage;
+use Pipeline\Common\StageCatch;
+use Pipeline\Interfaces\ICatch;
+use Pipeline\Interfaces\IPipeline;
+use Pipeline\Interfaces\IPipelineProcessor;
+use Pipeline\Interfaces\IStage;
 
 /**
  * Class Pipeline
@@ -99,7 +99,7 @@ class Pipeline implements IPipeline
      */
     public function then(Closure $stage): IPipeline
     {
-        $this->stages[] = new Stage(Stage::TYPE_STAGE, $stage);
+        $this->stages[] = new Stage(IStage::TYPE_STAGE, $stage);
         return $this;
     }
 
@@ -109,7 +109,7 @@ class Pipeline implements IPipeline
      */
     public function tap(Closure $stage): IPipeline
     {
-        $this->stages[] = new Stage(Stage::TYPE_TAP, $stage);
+        $this->stages[] = new Stage(IStage::TYPE_TAP, $stage);
         return $this;
     }
 

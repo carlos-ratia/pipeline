@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Test;
 
 
-use BunkerDB\Common\Pipeline;
 use Exception;
 use LogicException;
 use PHPUnit\Framework\TestCase as PHPUnit_TestCase;
+use Pipeline\Pipeline;
 
 
 /**

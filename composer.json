@@ -13,10 +13,7 @@
     "autoload": {
         "classmap": [
             "src/"
-        ],
-        "psr-4": {
-            "BunkerDB\\": "src/"
-        }
+        ]
     },
     "autoload-dev": {
         "psr-4": {

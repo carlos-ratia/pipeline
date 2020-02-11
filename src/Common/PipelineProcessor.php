@@ -2,13 +2,13 @@
 declare(strict_types=1);
 
 
-namespace BunkerDB\Common\Pipeline;
+namespace Pipeline\Common;
 
 
-use BunkerDb\Common\Pipeline\Interfaces\ICatch;
-use BunkerDB\Common\Pipeline\Interfaces\IPipelineProcessor;
-use BunkerDb\Common\Pipeline\Interfaces\IStage;
 use Exception;
+use Pipeline\Interfaces\ICatch;
+use Pipeline\Interfaces\IPipelineProcessor;
+use Pipeline\Interfaces\IStage;
 
 /**
  * Class BasePipelineProcessor

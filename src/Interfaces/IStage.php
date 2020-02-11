@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 
-namespace BunkerDb\Common\Pipeline\Interfaces;
+namespace Pipeline\Interfaces;
 
 
 use Closure;
