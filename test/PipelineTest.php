@@ -199,4 +199,41 @@ class PipelineTest extends PHPUnit_TestCase
         $this->assertEquals(true, $tap1);
         $this->assertEquals(false, $tap2);
     }
+
+    public function testJoin1()
+    {
+        $pipe1 = Pipeline::try(
+            function () {
+                return [1, 2, 3];
+            })
+            ->then(function ($data) {
+                return array_sum($data);
+            })
+            ->catch(function (Exception $e) {
+                return -1;
+            });
+
+        $pipe2 = Pipeline::try(
+            function ($value) {
+                return [1, 2, $value];
+            })
+            ->then(function ($data) {
+                return array_sum($data);
+            })
+            ->catch(function (Exception $e) {
+                return -2;
+            });
+        $pipe1->setProcessor(new Pipeline\Common\PipelineProcessor());
+        $pipe2->setProcessor(new Pipeline\Common\PipelineProcessor());
+        $this->assertInstanceOf(Pipeline\Common\PipelineProcessor::class, $pipe2->getProcessor());
+        $this->assertInstanceOf(Pipeline\Common\PipelineProcessor::class, $pipe2->getProcessor());
+        $pipe1->join($pipe2);
+
+        $result = $pipe1();
+
+        $this->assertEquals(9, $result);
+        $this->assertEquals(9, $result);
+        $this->assertInstanceOf(Pipeline\Common\PipelineProcessor::class, $pipe1->getProcessor());
+        $this->assertInstanceOf(Pipeline\Common\PipelineProcessor::class, $pipe2->getProcessor());
+    }
 }

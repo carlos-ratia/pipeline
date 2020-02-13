@@ -17,6 +17,7 @@ class Stage implements IStage
      * @var Closure
      */
     private $closure;
+
     /**
      * @var string
      */
