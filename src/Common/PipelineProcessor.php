@@ -18,6 +18,7 @@ class PipelineProcessor implements IPipelineProcessor
 {
     /**
      * @inheritDoc
+     * @throws Exception
      */
     public function __invoke($stages, $catches)
     {
@@ -34,30 +35,52 @@ class PipelineProcessor implements IPipelineProcessor
                 }
             }
         } catch (Exception $e) {
+
+            // PROCESS ALL STAGES TYPE TYPE_TAP
+            // .tapCatch((e) => {}) -> TYPE_TAP
             /** @var ICatch $catch */
             foreach ($catches as $catch) {
                 $type = $catch->getType();
                 $typeHint = $catch->getTypeHint();
                 $closure = $catch->getClosure();
-                if ($type !== IStage::TYPE_TAP) {
+                if ($type === IStage::TYPE_STAGE) {
                     continue;
                 }
                 if ($typeHint === get_class($e)) {
                     $closure($e);
                 }
             }
+
+            // PROCESS ALL STAGES TYPE TYPE_STAGE
+            // .tapCatch((e) => {}) -> TYPE_TAP
             /** @var ICatch $catch */
             foreach ($catches as $catch) {
                 $type = $catch->getType();
                 $typeHint = $catch->getTypeHint();
                 $closure = $catch->getClosure();
-                if ($type !== IStage::TYPE_STAGE) {
+                if ($type === IStage::TYPE_TAP) {
                     continue;
                 }
                 if ($typeHint === get_class($e) && $type === IStage::TYPE_STAGE) {
                     return $closure($e);
                 }
             }
+
+            // DEFAULT ERROR
+            /** @var ICatch $catch */
+            foreach ($catches as $catch) {
+                $type = $catch->getType();
+                $typeHint = $catch->getTypeHint();
+                $closure = $catch->getClosure();
+                if ($type === IStage::TYPE_TAP) {
+                    continue;
+                }
+                if ($typeHint === Exception::class && $type === IStage::TYPE_STAGE) {
+                    return $closure($e);
+                }
+            }
+
+            throw $e;
         }
         return $result;
     }

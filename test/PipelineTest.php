@@ -236,4 +236,80 @@ class PipelineTest extends PHPUnit_TestCase
         $this->assertInstanceOf(Pipeline\Common\PipelineProcessor::class, $pipe1->getProcessor());
         $this->assertInstanceOf(Pipeline\Common\PipelineProcessor::class, $pipe2->getProcessor());
     }
+
+
+    public function testTry7()
+    {
+        $tap1 = false;
+        $tap2 = false;
+
+        $this->expectException(LogicException::class);
+
+        $result = Pipeline::try(
+            function () {
+                return $this->data;
+            })
+            ->then(function ($data) {
+                throw new LogicException("TEST TRY 7");
+            })
+            ->then(function ($data) {
+                return array_sum($data);
+            })
+        ();
+    }
+
+    public function testTry8()
+    {
+        $tap1 = false;
+        $tap2 = false;
+
+        $result = Pipeline::try(
+            function () {
+                return $this->data;
+            })
+            ->then(function ($data) {
+                throw new LogicException("TEST TRY 7");
+            })
+            ->then(function ($data) {
+                return array_sum($data);
+            })
+            ->catch(function (Exception $e) {
+                return -1;
+            })
+            ->tapCatch(function (LogicException $e) use (&$tap1) {
+                $tap1 = true;
+                return -10;
+            })
+            ->tapCatch(function (Exception $e) use (&$tap2) {
+                $tap2 = true;
+                return -10;
+            })
+        ();
+
+        $this->assertEquals(-1,  $result);
+        $this->assertEquals(true, $tap1);
+        $this->assertEquals(false, $tap2);
+
+    }
+
+    public function testTry9()
+    {
+        $this->expectException(LogicException::class);
+
+        $result = Pipeline::try(
+            function () {
+                return $this->data;
+            })
+            ->then(function ($data) {
+                throw new LogicException("TEST TRY 7");
+            })
+            ->then(function ($data) {
+                return array_sum($data);
+            })
+            ->catch(function (Exception $e) {
+                throw $e;
+            })
+        ();
+
+    }
 }
